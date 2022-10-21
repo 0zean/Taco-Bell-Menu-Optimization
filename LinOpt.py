@@ -42,7 +42,7 @@ CarbsMin = st.sidebar.number_input('Carbohydrates Min', value=260)
 ProteinMin = st.sidebar.number_input('Protein Min', value=45)
 ProteinMax = st.sidebar.number_input('Protein Max', value=85)
 
-SodiumMax = st.sidebar.number_input('Total Fat Max', value=10)
+SodiumMax = st.sidebar.number_input('Sodium Max', value=10)
 
 
 # First entry is the calorie calculation (this is our objective)
