@@ -130,4 +130,4 @@ for circle, label in zip(circles, labels):
 st.pyplot(fig)
 
 st.subheader('Created By Nicholas Picini')
-st.caption('Get the code [here](https://www.datacareerjumpstart.com/30projectsresourcesignup)')
+st.caption('Get the code [here](https://github.com/0zean/Taco-Bell-Menu-Optimization)')
