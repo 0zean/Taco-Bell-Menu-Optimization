@@ -76,4 +76,6 @@ for col in col_names[1:]:
     food[col] = food[col].astype('float')
 
 
-food.to_csv('tbell_menu.csv', index=False)
+df = food[food["Menu Item"].str.contains("oz|proof|Water|Wine")==False]
+
+df.to_csv('tbell_menu.csv', index=False)
