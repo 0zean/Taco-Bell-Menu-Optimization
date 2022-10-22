@@ -31,18 +31,18 @@ MenuItems_vars = LpVariable.dicts("MenuItems", MenuItems, lowBound=0, upBound=15
 
 
 st.sidebar.write('Limits for Combo')
-TotalFat_val = st.sidebar.number_input('Total Fat Max', value=70)
-SatFat_val = st.sidebar.number_input('Saturated Fat Max', value=20)
+TotalFat_val = st.sidebar.number_input('Total Fat Max (g)', value=70)
+SatFat_val = st.sidebar.number_input('Saturated Fat Max (g)', value=20)
 
-SugarMin = st.sidebar.number_input('Sugar Min', value=80)
-SugarMax = st.sidebar.number_input('Sugar Max', value=100)
+SugarMin = st.sidebar.number_input('Sugar Min (g)', value=5)
+SugarMax = st.sidebar.number_input('Sugar Max (g)', value=100)
 
-CarbsMin = st.sidebar.number_input('Carbohydrates Min', value=260)
+CarbsMin = st.sidebar.number_input('Carbohydrates Min (g)', value=150)
 
-ProteinMin = st.sidebar.number_input('Protein Min', value=45)
-ProteinMax = st.sidebar.number_input('Protein Max', value=85)
+ProteinMin = st.sidebar.number_input('Protein Min (g)', value=45)
+ProteinMax = st.sidebar.number_input('Protein Max (g)', value=85)
 
-SodiumMax = st.sidebar.number_input('Sodium Max', value=10)
+SodiumMax = st.sidebar.number_input('Sodium Max (mg)', value=2000)
 
 
 # First entry is the calorie calculation (this is our objective)
@@ -60,7 +60,7 @@ prob += lpSum([Sugars[i]*MenuItems_vars[i] for i in MenuItems]) <= SugarMax, "Su
 prob += lpSum([Protein[i]*MenuItems_vars[i] for i in MenuItems]) >= ProteinMin, "Protein_lower"
 prob += lpSum([Protein[i]*MenuItems_vars[i] for i in MenuItems]) <= ProteinMax, "Protein_upper"
 # Sodium <= 6000 mg
-prob += lpSum([Sodium[i]*MenuItems_vars[i] for i in MenuItems]) <= SodiumMax*1000, "Sodium"
+prob += lpSum([Sodium[i]*MenuItems_vars[i] for i in MenuItems]) <= SodiumMax, "Sodium"
 
 
 prob.solve()
