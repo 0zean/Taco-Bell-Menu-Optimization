@@ -7,9 +7,9 @@ import random
 
 st.title("Taco Bell Healthy Items Tool")
 st.text('''
-        This tool, inspired by Avery Smith's McDonalds tool,
-        uses linear optimization to find possible orders
-        that meet nutritional constraints given by the user.
+        This tool uses linear optimization to find possible Taco Bell combos
+        that meet the nutritional constraints given by a user while minimizing
+        total calories; inspired by Avery Smith's project.
         ''')
 
 tbell = pd.read_csv('tbell_menu.csv')
