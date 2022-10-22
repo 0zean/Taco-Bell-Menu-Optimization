@@ -37,7 +37,7 @@ SatFat_val = st.sidebar.number_input('Saturated Fat Max (g)', value=20)
 SugarMin = st.sidebar.number_input('Sugar Min (g)', value=5)
 SugarMax = st.sidebar.number_input('Sugar Max (g)', value=100)
 
-CarbsMin = st.sidebar.number_input('Carbohydrates Min (g)', value=150)
+CarbsMin = st.sidebar.number_input('Carbohydrates Min (g)', value=100)
 
 ProteinMin = st.sidebar.number_input('Protein Min (g)', value=45)
 ProteinMax = st.sidebar.number_input('Protein Max (g)', value=85)
