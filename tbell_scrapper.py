@@ -77,6 +77,6 @@ for col in col_names[1:]:
 
 
 # removing drinks
-df = food[food["Menu Item"].str.contains("oz|proof|Water|Wine|Juice|Coffee|Creamer|Milk")==False]
+df = food[food["Menu Item"].str.contains("oz|proof|Water|Wine|Juice|Coffee|Creamer|Milk|Sangria")==False]
 
 df.to_csv('tbell_menu.csv', index=False)
