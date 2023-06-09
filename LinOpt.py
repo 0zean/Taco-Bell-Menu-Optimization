@@ -1,9 +1,10 @@
-import streamlit as st
-import pandas as pd
-from pulp import *
-import matplotlib.pyplot as plt
-import circlify
 import random
+
+import circlify
+import matplotlib.pyplot as plt
+import pandas as pd
+import streamlit as st
+from pulp import *
 
 st.title("Taco Bell Healthy Items Tool")
 st.text('''
@@ -16,7 +17,7 @@ tbell = pd.read_csv('tbell_menu.csv')
 
 MenuItems = tbell['Menu Item'].tolist()
 
-# Convert all of the macro nutrients fields to be dictionaries of the item names
+# Convert all of the macro nutrient fields to be dictionaries of the item names
 Calories = tbell.set_index('Menu Item')['Calories'].to_dict()
 TotalFat = tbell.set_index('Menu Item')['Total Fat (g)'].to_dict()
 SaturatedFat = tbell.set_index('Menu Item')['Saturated Fat (g)'].to_dict()
@@ -71,7 +72,7 @@ for constraint in prob.constraints:
     s = 0
     for var, coefficient in prob.constraints[constraint].items():
         s += var.varValue * coefficient
-    results[prob.constraints[constraint].name.replace('_lower','').replace('_upper','')] = s
+    results[prob.constraints[constraint].name.replace('_lower', '').replace('_upper', '')] = s
 
 objective_function_value = value(prob.objective)
 
@@ -91,7 +92,7 @@ ax.axis('off')
 
 circles = circlify.circlify(varsdict.values(),
                             show_enclosure=False,
-                            target_enclosure=circlify.Circle(x=0,y=0,r=1))
+                            target_enclosure=circlify.Circle(x=0, y=0, r=1))
 
 # Axis boundaries
 lim = max(max(abs(circle.x) + circle.r,
@@ -113,7 +114,7 @@ for circle, label in zip(circles, labels):
                             facecolor="#%06x" % random.randint(0, 0xFFFFFF),
                             edgecolor="black"))
 
-    plt.annotate(label, (x,y ) ,
+    plt.annotate(label, (x, y),
                  va='center',
                  ha='center',
                  bbox=dict(facecolor='white',
@@ -121,7 +122,7 @@ for circle, label in zip(circles, labels):
 
     value = circle.ex['datum']
 
-    plt.annotate(value, (x,y-.1 ) ,
+    plt.annotate(value, (x, y-.1),
                  va='center',
                  ha='center',
                  bbox=dict(facecolor='white',
